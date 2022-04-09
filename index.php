@@ -39,7 +39,6 @@ switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
 		}
 		if(isset($_SESSION['user_id'])){
 			unset($_SESSION['user_id']);
-		
 		}
 		require './login/logout.php';
 		break;
@@ -56,6 +55,13 @@ switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
 		header('Access-Control-Allow-Methods: POST');
 		header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods,Authorization, X-Requested-With');
 		include './api/post.php';
+		break;
+	case '/api/delete':
+		header('Access-Control-Allow-Origin: *');
+		header('Content-Type: application/json; charset=utf-8');
+		// header('Access-Control-Allow-Methods: GET');
+		// header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods,Authorization, X-Requested-With');
+		include './api/delete.php';
 		break;
     default:
         require 'intro.php';
